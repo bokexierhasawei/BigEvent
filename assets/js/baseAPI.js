@@ -6,17 +6,14 @@ $.ajaxPrefilter(function (options) {
   options.url = 'http://ajax.frontend.itheima.net' + options.url
   // 设置header请求头
   if (options.url.indexOf('/my/') > -1) {
-    options.hearders = {
+    options.headers = {
       Authorization: localStorage.getItem('token') || ''
     }
   }
 
   // 为所有的ajax请求 统一 配置 complete
   options.complete = function (res) {
-    console.log(res.responseJSON);
-    console.log(11);
     if (res.responseJSON.status == 1 && res.responseJSON.message == "身份认证失败！") {
-      console.log(1111);
       localStorage.removeItem('token')
       location.href = '/login.html'
     }

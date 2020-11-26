@@ -33,7 +33,6 @@ $(function () {
 function submitData(e) {
   e.preventDefault()
   let dataStr = $(this).serialize();
-  console.log(dataStr);
   $.ajax({
     url: '/api/reguser',
     method: 'post',
